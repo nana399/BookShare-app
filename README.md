@@ -35,7 +35,12 @@
 - フロントエンド部分をVue.js / Nuxt.jsで整える
 - Rspecでテストを書く
 
+# サンプルログイン
+```
+メールアドレス：sample.gmail.com
+パスワード：password
+```
 
 # デモ（現時点）
-[![Image from Gyazo](https://i.gyazo.com/a8f797de59cd0c80b775d0bc20836963.gif)](https://gyazo.com/a8f797de59cd0c80b775d0bc20836963)
+[![Image from Gyazo](https://i.gyazo.com/19d988ac0626f564d1c6b1494905e7d8.gif)](https://gyazo.com/19d988ac0626f564d1c6b1494905e7d8)
 
