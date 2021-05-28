@@ -1,7 +1,7 @@
 <h1>📖 BOOK SHARE 📖</h1>
 <h3>本の新規登録</h3>
 
-  <%= form_tag('/booksearch', method: :get) do %>
+  <%= form_tag('/book_search', method: :get, remote: true) do %>
     <div class="input-group">
       <%= search_field_tag "keyword", params[:keyword], class: "form-control", placeholder: "キーワード検索" %>
         <span class="input-group-btn">
