@@ -1,0 +1,65 @@
+<h1>📖 BOOK SHARE 📖</h1>
+<h3>本の新規登録</h3>
+
+  <%= form_tag('/booksearch', method: :get) do %>
+    <div class="input-group">
+      <%= search_field_tag "keyword", params[:keyword], class: "form-control", placeholder: "キーワード検索" %>
+        <span class="input-group-btn">
+          <%= submit_tag "検索", class: "btn btn-primary" %>
+        </span>
+    </div>
+  <% end %>
+<h3>検索結果(↓手入力でもOK〜！)</h3>
+
+<%= form_for @book do |f| %>
+  <div class="field">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title, :size => 30 %>
+
+  <h3>総合評価</h3>
+   <div class="post_form">
+    <%= f.radio_button :overrall, 5 ,id: 'star1'%>
+    <label for="star1"><span class="text">感動した</span>★</label>
+
+    <%= f.radio_button :overrall, 4 ,id: 'star2'%>
+    <label for="star2"><span class="text">イイネ！</span>★</label>
+
+    <%= f.radio_button :overrall, 3 ,id: 'star3'%>
+    <label for="star3"><span class="text">まあまあ</span>★</label>
+
+    <%= f.radio_button :overrall, 2 ,id: 'star4'%>
+    <label for="star4"><span class="text">うーん。</span>★</label>
+
+    <%= f.radio_button :overrall, 1 ,id: 'star5'%>
+    <label for="star5"><span class="text">最悪</span>★</label>
+ </div>
+
+  <div class="field">
+    <%= f.label :本のカテゴリー %>
+    <%= f.select :category, 
+    [["自己啓発", "自己啓発"], 
+    ["小説", "小説"], 
+    ["学習参考書", "学習参考書"],
+    ["その他", "その他"]], include_blank: "選択して下さい" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :どんな本？（一言で！） %>
+    <%= f.text_field :learn,size: 140 %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :この本から学んだこと %>
+    <%= f.text_field :about,size: 140 %>
+  </div>
+  <br>
+
+  <%= f.submit "本を投稿する" %>
+<% end %>
+<br>
+<br>
+
+
+<%= link_to "本の一覧に戻る", books_path %>

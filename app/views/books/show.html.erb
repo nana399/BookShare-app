@@ -1,0 +1,26 @@
+<h1>📖 BOOK SHARE 📖</h1>
+<h3>本の新規登録</h3>
+<div class="book">
+  <p><%= @book.title %></p>
+  <p><%= @book.category %></p>
+  <p><%= @book.learn%></p>
+  <p><%= @book.about %></p>
+  <p><%= @book.created_at %></p>
+</div>
+
+<% if user_signed_in? %>
+      <% if current_user.already_liked?(@book) %>
+          <%= link_to book_like_path(@book), method: :delete do %>
+          <i class="fas fa-heart"></i><%= @book.likes.count %>
+          <% end %>
+      <% else %>
+          <%= link_to book_likes_path(@book), method: :post do %>
+          <i class="far fa-heart"></i><%= @book.likes.count %>
+          <% end %>
+      <% end %>
+  <% else %>
+       <i class="far fa-heart"></i><%= @book.likes.count %>
+  <% end %>
+
+<%= link_to "本の一覧に戻る", books_path %>
+<%= link_to "編集する", edit_book_path(@book.id) %>

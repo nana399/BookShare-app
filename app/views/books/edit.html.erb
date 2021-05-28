@@ -1,0 +1,38 @@
+<h1>📖 BOOK SHARE 📖</h1>
+<h3>本の新規登録</h3>
+<%= form_for @book do |f| %>
+  <div class="field">
+    <%= f.label :本のタイトル %>
+    <%= f.text_field :title, :size => 30 %>
+  </div>
+  <br>
+
+
+  <div class="field">
+    <%= f.label :本のカテゴリー %>
+    <%= f.select :category, 
+    [["自己啓発", "自己啓発"], 
+    ["小説", "小説"], 
+    ["学習参考書", "学習参考書"]], include_blank: "選択して下さい" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :どんな本？（一言で！） %>
+    <%= f.text_field :learn,size: 140 %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :この本から学んだこと %>
+    <%= f.text_field :about,size: 140 %>
+  </div>
+  <br>
+
+  <%= f.submit "本を投稿する" %>
+<% end %>
+<br>
+<br>
+
+
+<%= link_to "本の一覧に戻る", books_path %>
