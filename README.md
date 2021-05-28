@@ -32,7 +32,6 @@
 # これから実装すること
 - GoogleBooksAPIを導入する
 - マイページ機能をつける
-- GoogleBooksAPIを導入する
 - フロントエンド部分をVue.js / Nuxt.jsで整える
 - Rspecでテストを書く
 
