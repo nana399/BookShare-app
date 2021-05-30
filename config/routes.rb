@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :likes, only: [:create, :destroy]
     root 'books#index'
-    get '/books/:id/book_search', to: 'books#google_search'
+    get '/books/:id/google_book_search', to: 'books#google_search'
   end
  
 end

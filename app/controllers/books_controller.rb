@@ -17,6 +17,7 @@ class BooksController < ApplicationController
      @book = Book.new
   end
 
+
   def create
     book = Book.new(book_params)
     if book.save
@@ -53,8 +54,10 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :learn, :about, :category, :overrall)
   end
+
   def google_search
     @res = GoogleBookSearch.instance.search(params[:keyword])
   end
+  
 end
 
