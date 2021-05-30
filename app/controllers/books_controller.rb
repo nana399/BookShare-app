@@ -11,13 +11,12 @@ class BooksController < ApplicationController
     @rank_books = Book.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}
   end
 
-  def search
-    @book = BookSearch.instance.search(params[:keyword])
-  end 
+
 
   def new
      @book = Book.new
   end
+
 
   def create
     book = Book.new(book_params)
@@ -55,5 +54,10 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :learn, :about, :category, :overrall)
   end
+
+  def google_search
+    @res = GoogleBookSearch.instance.search(params[:keyword])
+  end
+  
 end
 

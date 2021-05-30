@@ -1,6 +1,6 @@
 require 'net/https' # モジュールの読み込み
 
-class BookSearch # クラスとして定義
+class GoogleBookSearch # クラスとして定義
   include Singleton # デザインパターンの一種。GoogleBookClient.instance.search(keyword)のように外部から呼び出す
 
   def initialize
