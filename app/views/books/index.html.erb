@@ -1,6 +1,8 @@
-<h1>📖 BOOK SHARE 📖</h1>
-<h3>登録した本の一覧</h3>
-
+<%= stylesheet_link_tag 'index', :media => "all" %>
+<br>
+<br>
+<h2>登録した本の一覧</h2>
+<br>
 <h3>投稿を検索</h3>
  <%= form_tag({controller:"books",action:"index"}, method: :get) do %>
    <%= text_field_tag :search %>
@@ -15,19 +17,36 @@
 <br>
 <%= page_entries_info @books %>
 
+<br>
+<br>
 <div class="books-container">
   <% @books.each do |t| %>
     <div class="book">
     <div>
-    <h2>総合評価：
-    <span class="star-rating">
-       <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
-       <span class="star-rating-back">★★★★★</span>
-    </span> 
-    </h2>
+    <ul>
+      <li>
+        <h2>タイトル：
+        <%= t.title %>  
+        </h2>
+      </li>
+      <li>
+      <h2>総合評価：
+        <span class="star-rating">
+        <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
+        <span class="star-rating-back">★★★★★</span>
+      </span> 
+      </h2>
+      </li>
+    </ul>
    </div>
 
-<% if user_signed_in? %>
+      <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+      <%= t.user.email %>
+      <%= t.category %>
+      <%= t.learn %>
+      <%= t.about %>
+      
+      <% if user_signed_in? %>
       <% if current_user.already_liked?(t) %>
           <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
               <i class="far fa-heart"></i><%= t.likes.count %>
@@ -37,17 +56,12 @@
               <i class="far fa-heart"></i><%= t.likes.count %>
           <% end %>
       <% end %>
-  <% else %>
+     <% else %>
       <i class="far fa-heart"></i><%= t.likes.count %>
-  <% end %>
-  <% @rank_books.each do |t| %>
-  <% end %>
-      <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
-      <%= t.user.email %>
-      <%= t.title %>
-      <%= t.category %>
-      <%= t.learn %>
-      <%= t.about %>
+     <% end %>
+     <% @rank_books.each do |t| %>
+     <% end %>
+
       <%= t.created_at %>
       <%= link_to "詳細", book_path(t.id) %>
       <%= link_to "編集", edit_book_path(t.id) %>

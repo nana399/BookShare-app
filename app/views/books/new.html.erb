@@ -1,6 +1,7 @@
-<h1>📖 BOOK SHARE 📖</h1>
-<h3>本の新規登録</h3>
-
+<br>
+<br>
+<h2>本の新規登録</h2>
+<br>
   <%= form_tag('/book_search', method: :get, remote: true) do %>
     <div class="input-group">
       <%= search_field_tag "keyword", params[:keyword], class: "form-control", placeholder: "キーワード検索" %>
@@ -10,12 +11,14 @@
     </div>
   <% end %>
 <h3>検索結果(↓手入力でもOK〜！)</h3>
-
+<br>
 <%= form_for @book do |f| %>
   <div class="field">
-    <%= f.label :タイトル %>
+    <%= f.label :本のタイトル %>
     <%= f.text_field :title, :size => 30 %>
 
+<br>
+<br>
   <h3>総合評価</h3>
    <div class="post_form">
     <%= f.radio_button :overrall, 5 ,id: 'star1'%>

@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% if user_signed_in? %>
-     <li><%= button_to 'ログアウト', destroy_user_session_path, method:  :delete %></li>
-   <% else %>
-     <li><%= link_to "新規登録", new_user_registration_path %></li>
-     <li><%= link_to "ログイン", new_user_session_path %></li>
-   <% end %>
-
-    <title>SHARE読書</title>
+    <title>📖BOOK SHARE📖</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+   <header>
+      <h1>〜本と過ごす日〜</h1>
+      <h2>BOOK SHARE</h2>
+      <div class="header-list">
+        <ul>
+          <li><%= link_to "ホーム", books_path %></li>
+          <li><%= link_to "新規投稿",new_book_path %></li>
+        </ul>
+        <% if user_signed_in? %>
+          <li><%= button_to 'ログアウト', destroy_user_session_path, method:  :delete %></li>
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+        </div>
+  </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+     <p>Copyright © BANANA🍌 All Rights Reserved.</p>
+    </footer>
   </body>
 </html>
