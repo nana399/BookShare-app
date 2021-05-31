@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_books, through: :likes, source: :book
+  validates :name, presence: true 
+  validates :profile, length: { maximum: 200 } 
+
 
   def already_liked?(book)
     self.likes.exists?(book_id: book.id)
