@@ -12,6 +12,9 @@
 <% end %>
 
 <%= link_to "新規投稿へ", new_book_path %>
+<br>
+<%= page_entries_info @books %>
+
 <div class="books-container">
   <% @books.each do |t| %>
     <div class="book">

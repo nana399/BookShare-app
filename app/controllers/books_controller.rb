@@ -2,16 +2,15 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
     if params[:search] == nil || ''
-      @books= Book.all
+      @books= Book.all.page(params[:page]).per(5)
     elsif params[:search] == ''
-      @books= Book.all
+      @books= Book.all.page(params[:page]).per(5)
     else
-      @books = Book.where("body LIKE ? ",'%' + params[:search] + '%')
+      @books = Book.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(5)
     end
+
     @rank_books = Book.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}
   end
-
-
 
   def new
      @book = Book.new
