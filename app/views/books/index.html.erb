@@ -7,6 +7,10 @@
    <%= submit_tag '検索する'  %>
 <% end %>
 
+<% if user_signed_in? %>
+<%= link_to "マイページへ", user_path(current_user.id) %>
+<% end %>
+
 <%= link_to "新規投稿へ", new_book_path %>
 <div class="books-container">
   <% @books.each do |t| %>
@@ -35,6 +39,7 @@
   <% end %>
   <% @rank_books.each do |t| %>
   <% end %>
+      <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
       <%= t.user.email %>
       <%= t.title %>
       <%= t.category %>
