@@ -5,16 +5,24 @@
 <br>
  読んだ本の内容をアウトプットできるアプリです。
 <br>
-
-【URL】
-<br>
-https://bookshareing.herokuapp.com/books/new
 ```
 - どんな本なのか（一言で要約）
 - その本から得られたことは何なのか
 - 読んで面白かったのか
 ```
 を記録することが出来ます。
+
+【URL】
+<br>
+https://bookshareing.herokuapp.com/books/new
+
+
+## サンプルログイン
+```
+メールアドレス：sample@gmail.com
+パスワード：password
+```
+
 
 # 制作背景
 本を読んでも１週間後には内容を忘れてしまうことに問題意識を感じていました。
@@ -34,16 +42,11 @@ https://bookshareing.herokuapp.com/books/new
 - Ruby on Rails 6.1.3
 
 # これから実装すること
-- GoogleBooksAPIを導入する
-- マイページ機能をつける
+- GoogleBooksAPIを導入する　✅ 実装済み
+- マイページ機能をつける　✅ 実装済み
 - フロントエンド部分をVue.js / Nuxt.jsで整える
 - Rspecでテストを書く
 
-# サンプルログイン
-```
-メールアドレス：sample@gmail.com
-パスワード：password
-```
 
 # デモ（現時点）
 [![Image from Gyazo](https://i.gyazo.com/011e3328e20a830ddab730b895e2de37.gif)](https://gyazo.com/011e3328e20a830ddab730b895e2de37)
