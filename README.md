@@ -6,6 +6,9 @@
  読んだ本の内容をアウトプットできるアプリです。
 <br>
 
+【URL】
+<br>
+https://bookshareing.herokuapp.com/books/new
 ```
 - どんな本なのか（一言で要約）
 - その本から得られたことは何なのか
@@ -38,7 +41,7 @@
 
 # サンプルログイン
 ```
-メールアドレス：sample.gmail.com
+メールアドレス：sample@gmail.com
 パスワード：password
 ```
 
