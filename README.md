@@ -31,6 +31,9 @@ https://bookshareing.herokuapp.com/books/new
 <br>
 これを機に作ることにしました。
 
+# 工夫したところ
+- GoogleBooksAPIを入れて本登録を簡単にしたこと<br>
+→本の画像をクリックすると、自動的にフォームに「本のタイトル」と「著者」が代入される
 
 
 # 使用技術
