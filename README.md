@@ -3,14 +3,10 @@
 # アプリの概要
 読書シェアアプリ「BOOK　SHARE」
 <br>
- 読んだ本の内容をアウトプットできるアプリです。
+ - 読んだ本の内容をアウトプット
+- 読書仲間とつながることができるアプリです
 <br>
-```
-- どんな本なのか（一言で要約）
-- その本から得られたことは何なのか
-- 読んで面白かったのか
-```
-を記録することが出来ます。
+
 
 【URL】
 <br>
@@ -51,6 +47,4 @@ https://bookshareing.herokuapp.com/books/new
 - Rspecでテストを書く
 
 
-# デモ（現時点）
-[![Image from Gyazo](https://i.gyazo.com/011e3328e20a830ddab730b895e2de37.gif)](https://gyazo.com/011e3328e20a830ddab730b895e2de37)
 
