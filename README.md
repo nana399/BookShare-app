@@ -2,15 +2,10 @@
 
 # アプリの概要
 読書シェアアプリ「BOOK　SHARE」
-<br>
- - 読んだ本の内容をアウトプット
-- 読書仲間とつながることができるアプリです
-<br>
 
 
 【URL】
-<br>
-https://bookshareing.herokuapp.com/books/new
+  https://bookshareing.herokuapp.com/books/new
 
 
 ## サンプルログイン
@@ -19,6 +14,11 @@ https://bookshareing.herokuapp.com/books/new
 パスワード：password
 ```
 
+### ❏ コンセプト
+```
+- 本で学んだ内容をアウトプットできる
+- 読書仲間とつながることができる
+```
 
 # 制作背景
 本を読んでも１週間後には内容を忘れてしまうことに問題意識を感じていました。
@@ -26,9 +26,13 @@ https://bookshareing.herokuapp.com/books/new
 「どんな本」を読み、そこから「何を学んだか」をアウトプットしてこそ、読書の意味があると感じたので、
 <br>
 これを機に作ることにしました。
+<br>
 
-# 工夫したところ
-- GoogleBooksAPIを入れて本登録を簡単にしたこと<br>
+## 画面モック
+https://www.figma.com/file/EbJEXiKQIRRao6AASzUVXU/Untitled?node-id=0%3A1
+
+## 特徴
+ GoogleBooksAPIを入れて本登録を簡単に<br>
 →本の画像をクリックすると、自動的にフォームに「本のタイトル」と「著者」が代入される
 
 
