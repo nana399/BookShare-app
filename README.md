@@ -47,7 +47,7 @@ https://www.figma.com/file/EbJEXiKQIRRao6AASzUVXU/Untitled?node-id=0%3A1
 # これから実装すること
 - GoogleBooksAPIを導入する　✅ 実装済み
 - マイページ機能をつける　✅ 実装済み
-- フロントエンド部分をVue.js / Nuxt.jsで整える
+- フロントエンド部分をVue.js or Nuxt.jsで整える
 - Rspecでテストを書く
 
 
