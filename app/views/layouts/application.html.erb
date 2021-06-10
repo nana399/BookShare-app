@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>📖BOOK SHARE📖</title>
+    <title>BOOK SHARE</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,7 +13,10 @@
   <body>
    <header>
       <h1>〜本と過ごす日〜</h1>
-      <h2>BOOK SHARE</h2>
+      <h2>
+        <a href="/">BOOK SHARE</a>
+      </h2>
+      
       <div class="header-list">
         <ul>
           <li><%= link_to "ホーム", books_path %></li>
