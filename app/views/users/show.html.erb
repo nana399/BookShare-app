@@ -6,26 +6,24 @@
 <% if current_user.id == @user.id %>
   <%= link_to "編集する", edit_user_registration_path %>
 <% end %>
-
-<h2>ユーザーの投稿一覧</h2>
+<br>
+<br>
+<h1>ユーザーの投稿一覧</h1>
 <% @user.books.each do |t| %>
-  <%= t.user.name %>
-  <%= t.title %>
-  <%= t.category %>
-  <%= t.learn %>
-  <%= t.about %>
+<a href="/users/<%= t.user.id %>">
+    <%= t.user.name %></a>
+    <%= t.title %>
 <% end %>
-
-<h2>ユーザーがいいねした投稿一覧</h2>
+<br>
+<br>
+<h1>ユーザーがいいねした投稿一覧</h1>
 <% @user.liked_books.each do |t| %>
-  <%= t.user.name %>
-  <%= t.title %>
-  <%= t.category %>
-  <%= t.learn %>
-  <%= t.about %>
+  <a href="/users/<%= t.user.id %>">
+    <%= t.user.name %></a>
+    <%= t.title %>
 <% end %>
 
 <br>
 <br>
-
+<br>
 <%= link_to "本一覧に戻る", books_path %>

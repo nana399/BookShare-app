@@ -8,19 +8,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
    <header>
-      <h1>〜本と過ごす日〜</h1>
       <h2>
         <a href="/">BOOK SHARE</a>
       </h2>
       
       <div class="header-list">
-        <ul>
+        <ul class="gnavi">
           <li><%= link_to "ホーム", books_path %></li>
           <li><%= link_to "新規投稿",new_book_path %></li>
+          <li><%= link_to "マイページへ", user_path(current_user.id) %></li>
         </ul>
         <% if user_signed_in? %>
           <li><%= button_to 'ログアウト', destroy_user_session_path, method:  :delete %></li>
@@ -34,7 +37,7 @@
       <%= yield %>
     </main>
     <footer>
-     <p>Copyright © BANANA🍌 All Rights Reserved.</p>
+     <p>Copyright © Nana Adachi All Rights Reserved.</p>
     </footer>
   </body>
 </html>
