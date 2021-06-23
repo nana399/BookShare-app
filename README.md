@@ -5,7 +5,7 @@
 
 
 【URL】
-  https://bookshareing.herokuapp.com/books/new
+  https://bookshareing.herokuapp.com/
 
 
 ## サンプルログイン
