@@ -23,7 +23,11 @@
         <ul class="gnavi">
           <li><%= link_to "ホーム", books_path %></li>
           <li><%= link_to "新規投稿",new_book_path %></li>
-          <li><%= link_to "マイページへ", user_path(current_user.id) %></li>
+          <li>
+             <% if user_signed_in? %>
+             <%= link_to "マイページへ", user_path(current_user.id) %>
+             <% end %>
+          </li>
         </ul>
         <% if user_signed_in? %>
           <li><%= button_to 'ログアウト', destroy_user_session_path, method:  :delete %></li>
