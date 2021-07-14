@@ -1,0 +1,54 @@
+.sign_up {
+  width: 100%;
+  background-color: yellowgreen;
+  padding: 70px, 0px;
+  .sign_up_box {
+    width: 800px;
+    height: 800px;
+    color: darkorange;
+    background-color: #C4C4C4;
+    margin: auto;
+  }
+}
+  .title_area {
+    color: black;
+    width: 800px;
+    height: 140px;
+    padding-top: 60px;
+    background-color: cadetblue;
+
+    .title {
+      width: 670px;
+      height: 80px;
+      background-color: white ;
+
+      margin: auto;
+      line-height: 80px;
+      text-align: center;
+
+  .field_area {
+    width: 600px;
+    height: 372px;
+    background-color: darkmagenta;
+    margin: auto;
+
+    .field {
+      margin-bottom: 40px;
+
+      .field_input {
+        width: 600px;
+        height: 63px;
+        background-color: white;
+        border: 0px none;
+
+        font-size: 24px;
+        line-height: 63px;
+      }
+    }
+   }
+ }
+}
+.share_text {
+  font-size: 15px;
+  color: black;
+}

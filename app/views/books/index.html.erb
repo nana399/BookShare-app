@@ -3,8 +3,10 @@
       <p class="firstblock-name">
       <br>
       <br>
-      BOOK SHARE<br>
-      〜本と過ごす日〜<br>
+      <div class="ff_bookshare">
+      <h3>BOOK SHARE</h3>
+      <h3>〜本と過ごす日〜</h3> 
+     </div> 
     </section>
 
     <section id="second-block">
@@ -30,7 +32,11 @@
     <div class="books-container">
     <% @books.each do |t| %>
     <div class="book">
-    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+    <% if t.image.present? %>
+      <%= image_tag t.image_url, size: "250x200" %>
+    <%end %>
+
+    <%# <%= image_tag t.image, size: "250x200" if t.image? %> %>
     <div>
     <ul>
       <li>
@@ -134,24 +140,3 @@
     <br>
     <%= paginate @books %>
     </section>
-
-    <section id="forth-block">
-    <br>
-    <br>
-       <h2>BOOK SHARE</h2>
-    <br>
-    <br>
-    <div class="forthblock">
-      <div class="item">
-        <%= link_to "ホーム", books_path %>
-      </div>
-      <div class="item">
-        <%= link_to "新規投稿",new_book_path %>
-      </div>
-      <div class="item">
-        <% if user_signed_in? %>
-          <%= link_to "マイページへ", user_path(current_user.id) %>
-        <% end %>
-      </div>
-   </div>
-  </section>

@@ -32,9 +32,24 @@ input[type="search"]{
   margin-bottom: 30px;
 }
 .post_form {
-  align-items: center;
+  justify-content: center;
 }
 .hoge {
   align-items: center;
   width: 95%;
+}
+.star-rating {
+  justify-content: flex-start;
+}
+.star-align{
+   justify-content: flex-start;
+}
+.evaliation{
+  display: space;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.starevaliation {
+  display: inline-block;
+  text-align: left;
 }

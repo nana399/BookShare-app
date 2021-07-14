@@ -23,12 +23,13 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 header {
-  background-color:#D0CDCD;
+  background-color:#EBEBEB;
   height: 80px;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 10px 10px -5px rgba(0,0,0,0.5);
 }
 header a {
   color: black; 
@@ -48,17 +49,19 @@ header li {
   list-style: none;
   margin-right: 40px;
 }
-
 footer {
-  color: black;
+  color: white;
   height: 30px;
-  background-color: #D0CDCD;
+  background-color: #9B9B9B;
   bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: fixed;
+  box-shadow: 0 -5px 20px -5px rgba(0,0,0,0.5);
 }
+
 .gnavi{
   display: flex;
   flex-wrap: wrap;/*スマホ表示折り返し用なのでPCのみなら不要*/
@@ -75,21 +78,19 @@ footer {
 
 .gnavi li{
   margin-bottom:20px;
+  font-family: 'Open Sans', sans-serif;
 }
-
-/*==================================================
-5-3-3 左から右に線が伸びる（下部）
+/*=================================
+左から右に線が伸びる（下部）
 ===================================*/
 .gnavi li a{
-  /*線の基点とするためrelativeを指定*/
+/*線の基点とするためrelativeを指定*/
 position: relative;
 }
-
 .gnavi li.current a,
 .gnavi li a:hover{
 color:#0481A2;
 }
-
 .gnavi li a::after {
   content: '';
   /*絶対配置で線の位置を決める*/
@@ -105,14 +106,12 @@ color:#0481A2;
   transform: scale(0, 1);/*X方向0、Y方向1*/
   transform-origin: left top;/*左上基点*/
 }
-
 /*現在地とhoverの設定*/
 .gnavi li.current a::after,
 .gnavi li a:hover::after {
   transform: scale(1, 1);/*X方向にスケール拡大*/
 }
 /*========= レイアウトのためのCSS ===============*/
-
 .lead{
 padding: 50px 20px;
 }

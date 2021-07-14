@@ -3,16 +3,15 @@ class BooksController < ApplicationController
   def index
     if params[:search] == nil
       @books= Book.all.page(params[:page]).per(5)
-      #@books= Book.where(title:"カーネルサンダースの教え").page(params[:page]).per(5)
     elsif params[:search] == ""
-      @books= Book.all.page(params[:page]).per(5)
-      #@books= Book.where(title:"カーネルサンダースの教え").page(params[:page]).per(5)
+      @books= Book.all.page(params[:page]).per(5) 
     else
       @search = params[:search]
       @books = Book.where("title LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(5)
     end
     
     @rank_books = Book.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}
+    
   end
 
   def new
@@ -37,15 +36,17 @@ class BooksController < ApplicationController
         @books[x][3] = @bookjson.dig("items", x, "volumeInfo", "industryIdentifiers", 0, "identifier")
       end
     end
+  
     @title = params[:title] if params[:title].present?
     @author = params[:author] if params[:author].present?
-    @img = params[:image] if params[:image].present?
+    @img = params[:img] if params[:img].present?
   end
 
 
   def create
     book = Book.new(book_params)
     book.user_id = current_user.id
+    book.image = params[:book][:image]
     if book.save
       redirect_to :action => "index"
     else
