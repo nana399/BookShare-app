@@ -15,8 +15,7 @@
     </div>
   </form>
   <div class="form-footer">
-    <p><a href="#">新規登録する</a></p>
-    <p><a href="#">パスワードをお忘れですか？</a></p>
+    <%= render "users/shared/links" %>
   </div>
 </div>
 
@@ -30,6 +29,7 @@
     <%= f.label :password, "パスワード" %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
+  
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
