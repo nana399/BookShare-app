@@ -13,13 +13,12 @@
     <br>
     <br>
     <h2>気になる本検索</h2>
-    <br>
+    <br> 
     <h3>投稿を検索</h3>
     <%= form_tag({controller:"books",action:"index"}, method: :get) do %>
     <%= text_field_tag :search %>
     <%= submit_tag '検索する' %>
     <% end %>
-
     <% if user_signed_in? %>
       <%= link_to "マイページへ", user_path(current_user.id) %>
     <% end %>
@@ -32,11 +31,7 @@
     <div class="books-container">
     <% @books.each do |t| %>
     <div class="book">
-    <% if t.image.present? %>
-      <%= image_tag t.image_url, size: "250x200" %>
-    <%end %>
-
-    <%# <%= image_tag t.image, size: "250x200" if t.image? %> %>
+      <%= image_tag t.image, size: "250x200" if t.image? %> 
     <div>
     <ul>
       <li>
@@ -95,6 +90,7 @@
           <h2>タイトル：
           <%= t.title %>  
           <%= t.author %>
+          <%= image_tag t.image_url, size: "250x200" if t.image? %>
           </h2>
         </li>
         <li>
@@ -130,7 +126,6 @@
       <% end %>
         <% @rank_books.each do |t| %>
       <% end %>
-
     <%= t.created_at %>
     <%= link_to "詳細", book_path(t.id) %>
     <%= link_to "編集", edit_book_path(t.id) %>
