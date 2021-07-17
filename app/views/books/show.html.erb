@@ -27,6 +27,13 @@
        <i class="far fa-heart"></i><%= @book.likes.count %>
 <% end %>
 
+<h3>いいねしたユーザー</h2>
+<% @book.liked_users.each do |user| %>
+  <li>
+    <%= user.name %>
+  </li>
+<% end %>
+
 <%= link_to "本の一覧に戻る", books_path %>
 <%= link_to "編集する", edit_book_path(@book.id) %>
 </section>

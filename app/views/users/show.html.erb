@@ -1,4 +1,4 @@
-<h1>マイページ</h1>
+<h3>マイページ</h3>
 <p>名前 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
 <p>プロフィール : <%= @user.profile %></p>
@@ -8,15 +8,21 @@
 <% end %>
 <br>
 <br>
-<h1>ユーザーの投稿一覧</h1>
+<h3>ユーザーの投稿一覧</h3>
 <% @user.books.each do |t| %>
-<a href="/users/<%= t.user.id %>">
-    <%= t.user.name %></a>
-    <%= t.title %>
+<div class= "mypagethumb">
+   <p>
+     <%= image_tag t.image, size: "100x200" if t.image? %>
+   </p>
+  <a href="/users/<%= t.user.id %>">
+     <%= t.user.name %></a>
+      <%= t.title %>
+      <%= link_to "詳細へ", book_path(t.id) %>
+</div>
 <% end %>
 <br>
 <br>
-<h1>ユーザーがいいねした投稿一覧</h1>
+<h3>ユーザーがいいねした投稿一覧</h3>
 <% @user.liked_books.each do |t| %>
   <a href="/users/<%= t.user.id %>">
     <%= t.user.name %></a>

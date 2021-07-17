@@ -9,23 +9,17 @@
      </div> 
     </section>
 
-    <section id="second-block">
-    <br>
-    <br> 
-    <h3>投稿を検索</h3>
-    <%= form_tag({controller:"books",action:"index"}, method: :get) do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag '検索する' %>
-    <% end %>
-    <% if user_signed_in? %>
-      <%= link_to "マイページへ", user_path(current_user.id) %>
-    <% end %>
-      <%= link_to "新規投稿へ", new_book_path %>
-      <br>
-    </section>
+  
     <section id="third-block">
     <br>
-    <h2>BOOK SHARE RANKING👑</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>BOOK SHARE RANKING👑</h3>
+    <br>
+    <br>
+    <br>
     <br>
     <div class="books-container">
       <% @books.each do |t| %>
@@ -81,21 +75,23 @@
     <% end %>
     <br>
     <br>
+    <br>
+    <br>
     </section>
+    <br>
     <%= paginate @books %>
-
+    <br>
+    <br>
     <section id="forth-block">
-     <br>
-     <h2>My posts</h2>
-     <br>
+
 
       <div class="books-container">
-      
+      <h3>My Post</h3>
       <br>
       <br>
       <% @books.each do |t| %>
       <div class="book">
-        <%= image_tag t.image, size: "250x300" if t.image? %>
+        <%= image_tag t.image, size: "170x200" if t.image? %>
       <div>
       <br>
       <br>
@@ -108,10 +104,9 @@
 
       <a href="/users/<%= t.user.id %>">
       <%= t.user.name %></a>
-      <%= t.user.email %>
+      <br>
       <%= t.category %>
       <%= t.learn %>
-      <%= t.about %>
       
       <% if user_signed_in? %>
         <% if current_user.already_liked?(t) %>
