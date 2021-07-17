@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'new', :media => "all" %>
 <br>
-<h2>入力フォーム</h2>
+<br>
 <br>
 <div class="post-container">
   <h1>書籍の新規登録</h1>
@@ -65,7 +65,8 @@
     <%= form.text_area :about,class: "hoge", size: "140x6" %>
   </div>
   <br>
-  <h3>総合評価</h3>
+  <h4>総合評価</h4>
+  <br>
   <div class= "star-rating">
    <div class="post_form">
     <%= form.radio_button :overrall, 5 ,id: 'star1'%>

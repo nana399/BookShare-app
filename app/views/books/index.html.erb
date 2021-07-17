@@ -11,8 +11,6 @@
 
     <section id="second-block">
     <br>
-    <br>
-    <h2>気になる本検索</h2>
     <br> 
     <h3>投稿を検索</h3>
     <%= form_tag({controller:"books",action:"index"}, method: :get) do %>
@@ -23,39 +21,48 @@
       <%= link_to "マイページへ", user_path(current_user.id) %>
     <% end %>
       <%= link_to "新規投稿へ", new_book_path %>
-    <br>
+      <br>
+    </section>
+    <section id="third-block">
     <br>
     <h2>BOOK SHARE RANKING👑</h2>
     <br>
-    <br>
     <div class="books-container">
-    <% @books.each do |t| %>
-    <div class="book">
-      <%= image_tag t.image, size: "250x200" if t.image? %> 
-    <div>
-    <ul>
-      <li>
-        <h2>タイトル :
-        <%= t.title %>
-        <%= t.author %>
-        </h2>
-      </li>
-      <li>
-        <h2>総合評価：
+      <% @books.each do |t| %>
+      <div class="blockwrapper">
+        <div class=block>
+          <p class= "blockthumb">
+          <%= image_tag t.image, size: "100x200" if t.image? %>
+        <br>
+        <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+            <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% else %>
+            <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+            <% end %>
+        <% end %>
+      <% else %>
+        <i class="far fa-heart"></i><%= t.likes.count %>
+      <% end %>
+        <% @rank_books.each do |t| %>
+      <% end %>
+      <%= link_to "詳細", book_path(t.id) %> 
+        </p>
+        <div class="bottomcontainer">
+        <a href="/users/<%= t.user.id %>">
+        <%= t.user.name %></a>
+        <%= t.created_at %>
           <span class="star-rating">
           <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
           <span class="star-rating-back">★★★★★</span>
           </span> 
-        </h2>
-      </li>
-    </ul>
+        </div>
+      </div>
     </div>
-    <a href="/users/<%= t.user.id %>">
-    <%= t.user.name %></a>
-    <%= t.user.email %>
-    <%= t.category %>
-    <%= t.learn %>
-    <%= t.about %>
+    <br>
     <% if user_signed_in? %>
         <% if current_user.already_liked?(t) %>
             <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
@@ -68,40 +75,35 @@
         <% end %>
     <% else %>
         <i class="far fa-heart"></i><%= t.likes.count %>
-        <% end %>
+    <% end %>
         <% @rank_books.each do |t| %>
-        <% end %>
+          <% end %>
     <% end %>
     <br>
-    <%= paginate @books %>
+    <br>
     </section>
+    <%= paginate @books %>
 
-    <section id="third-block">
+    <section id="forth-block">
+     <br>
+     <h2>My posts</h2>
+     <br>
+
       <div class="books-container">
-      <h2>My posts</h2>
+      
       <br>
       <br>
       <% @books.each do |t| %>
       <div class="book">
-        <%= image_tag t.image_url, size: "250x200" if t.image? %>
+        <%= image_tag t.image, size: "250x300" if t.image? %>
       <div>
-      <ul>
-        <li>
-          <h2>タイトル：
-          <%= t.title %>  
-          <%= t.author %>
-          <%= image_tag t.image_url, size: "250x200" if t.image? %>
-          </h2>
-        </li>
-        <li>
-          <h2>総合評価：
-            <span class="star-rating">
-            <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
-            <span class="star-rating-back">★★★★★</span>
-            </span> 
-          </h2>
-        </li>
-      </ul>
+      <br>
+      <br>
+      <span class="star-rating">
+          <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
+          <span class="star-rating-back">★★★★★</span>
+          </span>
+      </h2>
     </div>
 
       <a href="/users/<%= t.user.id %>">
@@ -123,7 +125,7 @@
         <% end %>
       <% else %>
         <i class="far fa-heart"></i><%= t.likes.count %>
-      <% end %>
+       <% end %>
         <% @rank_books.each do |t| %>
       <% end %>
     <%= t.created_at %>

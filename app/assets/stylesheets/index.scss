@@ -1,19 +1,38 @@
 h2 {
-  margin-left: 10px;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 14em
 }
 .books-container {
-  width: 80%;
-  margin: 10px auto;
+  display: flex;
+  width: 90%;
+  margin: auto;
+  display: flex;
 }
-h3 {
-  margin-bottom: 30px;
-  margin-left: 10px;
-}
-.book {
-  border-top: solid #EBEBEB;
-  margin-top: 10px;
-  padding-top: 20px;
+.blockwrapper {
+  display: inline-block;
+  margin: auto;
+  z-index: 1;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  background-color: transparent;
+
+  .block {
+    border-top: solid #EBEBEB;
+    background-color: #E3dede;
+    margin-top: 5px;
+    padding-top: 5px;
+    margin: auto;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+    .blockthumb img {
+      display: block;
+      width: 60%;
+      margin: 36px;
+      object-fit: cover;
+      text-align: center;
+    }
 }
 .main-box {
   margin: 5px 0;
@@ -50,9 +69,15 @@ h3 {
 #second-block {
   background-color :white;
   width: 100%;
-  height: 1450px;
 }
-#third-block {
+#third-block{
+  background-color :white;
+  width: 100%;
+  height: 700px;
+  justify-content: flex-end;
+  align-items: center;
+}
+#forth-block {
   background-color :#DEDEDE;
   background-size: cover;
   width: 100%;
@@ -61,6 +86,9 @@ h3 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+.far fa-heart {
+  size: 7px;
 }
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
