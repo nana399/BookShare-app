@@ -29,7 +29,6 @@
     <%= form.label :著者 %>
     <%= form.text_field :author, class: 'form-control', value: "#{@author}" %>
   </h3>
-    <p><%= @img %></p>
     <%= form.hidden_field :image, class: 'form-control', value: "#{@img}" %>
     <br>
     <br>
@@ -58,13 +57,17 @@
   <br>
   <br>
   <div class="field">
+  <h3>
     <%= form.label :どんな本？（一言で！） %>
     <%= form.text_field :learn,size: 140 %>
+  </h3>
   </div>
   <br>
   <div class="field">
+  <h3>
     <%= form.label :この本から学んだこと %><br>
     <%= form.text_area :about,class: "hoge", size: "140x6" %>
+  </h3>
   </div>
   <br>
   <h3>総合評価</h3>
@@ -102,8 +105,8 @@
       </p>
       <br>
     </div>
-    <%= form.submit "本を投稿する" %>
-  <% end %>
+   <%= form.submit "本を投稿する" %>
+   <% end %>
   <h3>
     <%= link_to "本の一覧に戻る", books_path %>
   </h3>
@@ -112,7 +115,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
   <script>bubbly({
   colorStart: '#fff4e6',
-  colorStop: '#ffe9e4',
+  colorStop: '#fff4e6',
   blur:1,
   compose: 'source-over',
   bubbleFunc:() => `hsla(${Math.random() * 50}, 100%, 50%, .3)`});</script>
