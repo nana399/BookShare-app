@@ -65,7 +65,7 @@
         <div class=block>
          <h3>
           <p class= "blockthumb">
-          <%= image_tag t.image, size: "120x200" if t.image? %>
+          <%= image_tag t.image, size: "120x220" if t.image? %>
         <br>
         <% if user_signed_in? %>
         <% if current_user.already_liked?(t) %>
@@ -118,7 +118,7 @@
         <div class=mypostblock>
           <h3>
             <p class= "blockthumb">
-            <%= image_tag t.image, size: "120x350" if t.image? %>
+            <%= image_tag t.image, size: "130x330" if t.image? %>
             <br>
             <% if user_signed_in? %>
             <% if current_user.already_liked?(t) %>
