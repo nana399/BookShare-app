@@ -1,34 +1,62 @@
-<h3>マイページ</h3>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<h3>⚪マイページ</h3>
+<h3>
+  <br>
+  <p>名前 : <%= @user.name %></p>
+  <p>メールアドレス : <%= @user.email %></p>
+  <p>プロフィール : <%= @user.profile %></p>
 
-<% if current_user.id == @user.id %>
-  <%= link_to "編集する", edit_user_registration_path %>
-<% end %>
+  <% if current_user.id == @user.id %>
+    <%= link_to "編集する", edit_user_registration_path, class:"btn-gradient-3d-simple" %>
+  <% end %>
+</h3>
 <br>
 <br>
 <h3>ユーザーの投稿一覧</h3>
+<br>
 <% @user.books.each do |t| %>
-<div class= "mypagethumb">
-   <p>
-     <%= image_tag t.image, size: "100x200" if t.image? %>
-   </p>
-  <a href="/users/<%= t.user.id %>">
-     <%= t.user.name %></a>
-      <%= t.title %>
-      <%= link_to "詳細へ", book_path(t.id) %>
+<div class="blockwrapper">
+        <div class=block>
+         <h3>
+          <p class= "blockthumb">
+            <%= image_tag t.image, size: "180x250" if t.image? %>
+          </p>
+           <div class="bottomcontainer">
+              <h3>
+              <%= t.title %>
+              <br>
+              <%= link_to "詳細", book_path(t.id), class:"btn-gradient-3d-orange" %>
+              <%= link_to "編集", edit_book_path(t.id), class:"btn-gradient-3d-simple" %>
+              <%= link_to "削除", book_path(t.id), class:"btn-gradient-3d-red", method: :delete %>
+              </h3>
+            </div>
+        </div>
 </div>
 <% end %>
 <br>
 <br>
-<h3>ユーザーがいいねした投稿一覧</h3>
-<% @user.liked_books.each do |t| %>
-  <a href="/users/<%= t.user.id %>">
-    <%= t.user.name %></a>
-    <%= t.title %>
-<% end %>
-
+<br>
+<h3>〜ユーザーがいいねした投稿一覧〜<h3>
+    <% @user.liked_books.each do |t| %>
+    <div class="blockwrapper">
+        <div class=block>
+         <h3>
+          <p class= "blockthumb">
+            <%= image_tag t.image, size: "180x250" if t.image? %>
+          </p>
+           <div class="bottomcontainer">
+              <h3>
+              <a href="/users/<%= t.user.id %>">
+              <%= t.user.name %></a>
+              <%= t.created_at.to_s(:datetime_jp) %>
+              <br>
+             <%= t.title %>
+             <%= link_to "詳細へ", book_path(t.id), class:"btn-gradient-3d-simple" %>
+           </div>
+          </h3>
+        </div>
+    </div>
+   <% end %>
+</div>
 <br>
 <br>
 <br>

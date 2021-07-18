@@ -12,6 +12,7 @@ module BookApp
     config.load_defaults 6.1
     config.paths.add 'lib', eager_load: true 
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #

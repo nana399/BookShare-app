@@ -1,39 +1,53 @@
 <%= stylesheet_link_tag 'show', :media => "all" %>
 
 <section id= "edit-block">
-<div class="book">
-  <h3>本の詳細情報</h3>
-  <%= @book.image %>
+   <div class="imageblock">
+      <%= image_tag @book.image, size: "320x400" if @book.image? %>
+      <br>
+      <h3>いいねしたユーザー
+         <% @book.liked_users.each do |user| %>
+        <li>
+          <%= user.name %>
+        </li>
+      <% end %>
+      <br>
+      <br>
+      <a href="https://www.amazon.co.jp/%E6%9C%AC-%E6%9B%B8%E7%B1%8D-%E9%80%9A%E8%B2%A9/b/?ie=UTF8&node=465392&ref_=nav_cs_books_990d615e94b14c8da5e8ca284e4adc9e" class="btn-gradient-3d-simple">Amazonで見てみる👀</a>
 
-  <p>本のタイトル：<%= @book.title %></p>
-  <p>本の著者：<%= @book.author %></p>
-  <p>本のカテゴリー：<%= @book.category %></p>
-  <p>その本を一言でまとめると：<%= @book.learn%></p>
-  <p>その本で学んだこと：<%= simple_format(@book.about) %></p>
-  <p><%= @book.created_at %></p>
-</div>
+      <br>
+      <br>
+      <%= link_to "本の一覧に戻る", books_path, class: "btn-gradient-3d-orange" %>
+      <%= link_to "編集する", edit_book_path(@book.id), class: "btn-gradient-3d-orange" %>
+      </h3>
+    </div>
 
-<% if user_signed_in? %>
-    <% if current_user.already_liked?(@book) %>
-         <%= link_to book_like_path(@book), method: :delete do %>
-         <i class="fas fa-heart"></i><%= @book.likes.count %>
-         <% end %>
-    <% else %>
-          <%= link_to book_likes_path(@book), method: :post do %>
-          <i class="far fa-heart"></i><%= @book.likes.count %>
+  <div class="form-wrapper">
+    <div class="field">
+      <br>
+      <h3>【本の詳細情報】</h3>
+      <div class="showblock">
+            <h3>本のタイトル：<%= @book.title %></h3>
+            <h3>本の著者：<%= @book.author %></h3>
+            <h3>本のカテゴリー：<%= @book.category %></h3>
+            <h3>その本を一言でまとめると：<%= @book.learn%></h3>
+            <h3>その本で学んだこと：<%= simple_format(@book.about) %></h3>
+            <h3><%= @book.created_at %></h3>
+      </div>
+    </div>
+  </div>
+  <h3>
+  <% if user_signed_in? %>
+      <% if current_user.already_liked?(@book) %>
+          <%= link_to book_like_path(@book), method: :delete do %>
+          <i class="fas fa-heart"></i><%= @book.likes.count %>
           <% end %>
-    <% end %>
-<% else %>
-       <i class="far fa-heart"></i><%= @book.likes.count %>
-<% end %>
-
-<h3>いいねしたユーザー</h2>
-<% @book.liked_users.each do |user| %>
-  <li>
-    <%= user.name %>
-  </li>
-<% end %>
-
-<%= link_to "本の一覧に戻る", books_path %>
-<%= link_to "編集する", edit_book_path(@book.id) %>
+      <% else %>
+            <%= link_to book_likes_path(@book), method: :post do %>
+            <i class="far fa-heart"></i><%= @book.likes.count %>
+            <% end %>
+      <% end %>
+  <% else %>
+        <i class="far fa-heart"></i><%= @book.likes.count %>
+  <% end %>
+  </h3>
 </section>

@@ -3,12 +3,52 @@
       <p class="firstblock-name">
       <br>
       <br>
-      <div class="ff_bookshare">
-      <h3>BOOK SHARE</h3>
-      <h3>〜本と過ごす日〜</h3> 
-     </div> 
-    </section>
+        <div class= "searchbox">
+         <h3>BOOK SHARE</h3>
+         <h3>〜本と過ごす日〜</h3>
+         <br>
+         <br>
+          <h3>投稿を検索</h3>
+            <%= form_tag({controller:"books",action:"index"}, method: :get) do %>
+            <%= text_field_tag :search %>
+            <%= submit_tag '検索する' %>
+            <% end %>
+          <% if user_signed_in? %>
+          <h3>
+            <%= link_to "マイページ", user_path(current_user.id), class: "btn-flat-border" %>
+            <%= link_to "新規投稿", new_book_path, class: "btn-flat-border" %>
+          </h3>
+          <% end %>
+        </div>
+      <br>
 
+    </section>
+    <section id="second-block">
+
+    <h1>What's BOOK SHARE?<h1>
+     <div class="aboutbookshare">
+       <div class="about-item">
+         <br>
+         <div class="circle"></div>
+         <div class="circle"></div>
+       </div>
+       <div class="about-item">
+        <h3>〜読書した本をアウトプットできるサイト〜</h3>
+          <h3>
+            <p>・どんな本なのか<br>
+            <p>・その本から得られたことは何なのか<br>
+            <p>・読んで面白かったのか<br>
+            <br>
+            について記録することが出来ます。</h3>
+            <br>
+       </div>
+       <div class="about-item">
+         <br>
+         <div class="circle"></div>
+         <div class="circle"></div>
+        </div>
+      </div>
+    </section>
   
     <section id="third-block">
     <br>
@@ -16,17 +56,16 @@
     <br>
     <br>
     <br>
-    <h3>BOOK SHARE RANKING👑</h3>
-    <br>
-    <br>
+    <h1>BOOK SHARE RANKING👑</h1>
     <br>
     <br>
     <div class="books-container">
       <% @books.each do |t| %>
       <div class="blockwrapper">
         <div class=block>
+         <h3>
           <p class= "blockthumb">
-          <%= image_tag t.image, size: "100x200" if t.image? %>
+          <%= image_tag t.image, size: "120x200" if t.image? %>
         <br>
         <% if user_signed_in? %>
         <% if current_user.already_liked?(t) %>
@@ -44,11 +83,12 @@
         <% @rank_books.each do |t| %>
       <% end %>
       <%= link_to "詳細", book_path(t.id) %> 
+      </h3>
         </p>
         <div class="bottomcontainer">
         <a href="/users/<%= t.user.id %>">
         <%= t.user.name %></a>
-        <%= t.created_at %>
+        <%= t.created_at.to_s(:datetime_jp) %>
           <span class="star-rating">
           <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
           <span class="star-rating-back">★★★★★</span>
@@ -57,19 +97,6 @@
       </div>
     </div>
     <br>
-    <% if user_signed_in? %>
-        <% if current_user.already_liked?(t) %>
-            <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
-              <i class="far fa-heart"></i><%= t.likes.count %>
-            <% end %>
-        <% else %>
-            <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
-              <i class="far fa-heart"></i><%= t.likes.count %>
-            <% end %>
-        <% end %>
-    <% else %>
-        <i class="far fa-heart"></i><%= t.likes.count %>
-    <% end %>
         <% @rank_books.each do |t| %>
           <% end %>
     <% end %>
@@ -79,56 +106,62 @@
     <br>
     </section>
     <br>
+    <h3>
     <%= paginate @books %>
+    </h3>
     <br>
     <br>
     <section id="forth-block">
-
-
+      <h1>My Post</h1>
       <div class="books-container">
-      <h3>My Post</h3>
-      <br>
-      <br>
       <% @books.each do |t| %>
-      <div class="book">
-        <%= image_tag t.image, size: "170x200" if t.image? %>
-      <div>
-      <br>
-      <br>
-      <span class="star-rating">
+      <div class="blockwrapper">
+        <div class=mypostblock>
+          <h3>
+            <p class= "blockthumb">
+            <%= image_tag t.image, size: "120x200" if t.image? %>
+            <br>
+            <% if user_signed_in? %>
+            <% if current_user.already_liked?(t) %>
+                <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
+                  <i class="far fa-heart"></i><%= t.likes.count %>
+                <% end %>
+            <% else %>
+                <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
+                  <i class="far fa-heart"></i><%= t.likes.count %>
+                <% end %>
+            <% end %>
+          <% else %>
+            <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+            <% @rank_books.each do |t| %>
+          <% end %>
+          <%= link_to "詳細", book_path(t.id) %>
+          <%= link_to "編集", edit_book_path(t.id) %>
+          <%= link_to "削除", book_path(t.id), method: :delete %>
+          </p>
+        </h3>
+        <div class="bottomcontainer">
+        <a href="/users/<%= t.user.id %>">
+      <%= t.user.name %></a>
+        <%= t.created_at.to_s(:datetime_jp) %>
+          <span class="star-rating">
           <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
           <span class="star-rating-back">★★★★★</span>
-          </span>
-      </h2>
+          </span> 
+        </div>
+      </div>
     </div>
-
-      <a href="/users/<%= t.user.id %>">
-      <%= t.user.name %></a>
-      <br>
-      <%= t.category %>
-      <%= t.learn %>
-      
-      <% if user_signed_in? %>
-        <% if current_user.already_liked?(t) %>
-            <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
-              <i class="far fa-heart"></i><%= t.likes.count %>
-            <% end %>
-        <% else %>
-            <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
-              <i class="far fa-heart"></i><%= t.likes.count %>
-            <% end %>
-        <% end %>
-      <% else %>
-        <i class="far fa-heart"></i><%= t.likes.count %>
-       <% end %>
-        <% @rank_books.each do |t| %>
-      <% end %>
-    <%= t.created_at %>
-    <%= link_to "詳細", book_path(t.id) %>
-    <%= link_to "編集", edit_book_path(t.id) %>
-    <%= link_to "削除", book_path(t.id), method: :delete %>
-    </div>
-    <% end %>
     <br>
-    <%= paginate @books %>
+      <% @rank_books.each do |t| %>
+      <% end %>
+     <% end %>
+    </div>
+    <br>
+    <br>
+    <% if user_signed_in? %>
+          <h3>
+          <%= link_to "＋もっと見る", user_path(current_user.id), class:"btn-gradient-simple" %>
+          </h3>
+    <% end %>
     </section>
