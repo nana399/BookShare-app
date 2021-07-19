@@ -1,4 +1,6 @@
-<h3>⚪マイページ</h3>
+<br>
+<br>
+<h3>ーマイページー</h3>
 <h3>
   <br>
   <p>名前 : <%= @user.name %></p>
@@ -11,14 +13,14 @@
 </h3>
 <br>
 <br>
-<h3>ユーザーの投稿一覧</h3>
+<h3>ーユーザーの投稿一覧ー</h3>
 <br>
 <% @user.books.each do |t| %>
 <div class="blockwrapper">
         <div class=block>
          <h3>
           <p class= "blockthumb">
-            <%= image_tag t.image, size: "180x250" if t.image? %>
+            <%= image_tag t.image, size: "100x300" if t.image? %>
           </p>
            <div class="bottomcontainer">
               <h3>
@@ -35,24 +37,21 @@
 <br>
 <br>
 <br>
-<h3>〜ユーザーがいいねした投稿一覧〜<h3>
+<h3>ーユーザーがいいねした投稿一覧ー<h3>
+<br>
     <% @user.liked_books.each do |t| %>
     <div class="blockwrapper">
         <div class=block>
-         <h3>
           <p class= "blockthumb">
             <%= image_tag t.image, size: "100x350" if t.image? %>
           </p>
-           <div class="bottomcontainer">
-              <h3>
+           <div class="bottomcontainer">           
               <a href="/users/<%= t.user.id %>">
               <%= t.user.name %></a>
               <%= t.created_at.to_s(:datetime_jp) %>
               <br>
-             <%= t.title %>
-             <%= link_to "詳細へ", book_path(t.id), class:"btn-gradient-3d-simple" %>
-           </div>
-          </h3>
+             <%= link_to "詳細", book_path(t.id), class:"btn-gradient-3d-orange" %>
+           </div>         
         </div>
     </div>
    <% end %>
@@ -60,4 +59,11 @@
 <br>
 <br>
 <br>
-<%= link_to "本一覧に戻る", books_path %>
+<h3>
+  <%= link_to "本一覧に戻る", books_path, class: "btn-flat-border" %>
+</h3>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -38,7 +38,7 @@
           <li><%= link_to "新規投稿",new_book_path %></li>
           <li>
              <% if user_signed_in? %>
-             <%= link_to "マイページへ", user_path(current_user.id) %>
+             <%= link_to "マイページ", user_path(current_user.id) %>
              <% end %>
           </li>
         </ul>

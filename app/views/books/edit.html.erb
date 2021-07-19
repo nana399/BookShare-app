@@ -5,91 +5,95 @@
   <div class="post-container">
   <br>
   <br>
-  <h3>本の編集</h3>
+  <h2>本の編集</h2>
+  <br>
+  <br>
   <%= form_for @book do |f| %>
     <div class="field">
-    <h3>
-      <%= f.label :本のタイトル %>
-      <%= f.text_field :title, class: 'form-control', :size => 30 %>
+      <h3>
+        <%= f.label :本のタイトル %>
+        <%= f.text_field :title, class: 'form-control', :size => 30 %>
+      </h3>
     </div>
     <br>
     <div class="field">
-      <%= f.label :著者 %>
-      <%= f.text_field :author, class: 'form-control', :size => 30 %>
+      <h3>
+        <%= f.label :著者 %>
+        <%= f.text_field :author, class: 'form-control', :size => 30 %>      
+       </h3>
     </div>
+    <br>
+    <br>
+    <div class="field">
+      <h3>
+        <%= f.label :本のカテゴリー %>
+        <%= f.select :category, 
+        [["自己啓発", "自己啓発"], 
+        ["文学・評論", "文学・評論"],
+        ["ビジネス・経済","ビジネス・経済"],
+        ["歴史・地理", "歴史・地理"] ,
+        ["政治・社会", "政治・社会"],
+        ["芸能・エンターテイメント", "芸能・エンターテイメント"],
+        ["アート・建築・デザイン", "アート・建築・デザイン"],
+        ["人文・思想・宗教", "人文・思想・宗教"],
+        ["暮らし・健康・料理", "暮らし・健康・料理"],
+        ["サイエンス・テクノロジー", "サイエンス・テクノロジー"],
+        ["趣味・実用", "趣味・実用"],
+        ["旅行・紀行", "旅行・紀行"],
+        ["学習参考書", "学習参考書"],
+        ["コミックス", "コミックス"],
+        ["その他", "その他"]], include_blank: "選択して下さい" %>
+      </h3>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="field">
+      <h3>
+        <%= f.label :どんな本？（一言で！） %>
+        <%= f.text_field :learn,class: 'form-control', size: 140 %>
     </h3>
+    </div>
     <br>
+
+    <div class="field">
+      <h3>
+        <%= f.label :この本から学んだこと %><br>
+        <%= f.text_area :about,class: 'form-control', size: "80x6" %>
+      </h3>
+    </div>
     <br>
-  <div class="field">
-  <h3>
-    <%= f.label :本のカテゴリー %>
-    <%= f.select :category, 
-    [["自己啓発", "自己啓発"], 
-    ["文学・評論", "文学・評論"],
-    ["ビジネス・経済","ビジネス・経済"],
-    ["歴史・地理", "歴史・地理"] ,
-    ["政治・社会", "政治・社会"],
-    ["芸能・エンターテイメント", "芸能・エンターテイメント"],
-    ["アート・建築・デザイン", "アート・建築・デザイン"],
-    ["人文・思想・宗教", "人文・思想・宗教"],
-    ["暮らし・健康・料理", "暮らし・健康・料理"],
-    ["サイエンス・テクノロジー", "サイエンス・テクノロジー"],
-    ["趣味・実用", "趣味・実用"],
-    ["旅行・紀行", "旅行・紀行"],
-    ["学習参考書", "学習参考書"],
-    ["コミックス", "コミックス"],
-    ["その他", "その他"]], include_blank: "選択して下さい" %>
-  </h3>
+    <h3>総合評価</h3>
+    <br>
+   <div class= "star-rating">
+     <div class="post_form">
+       <%= f.radio_button :overrall, 5 ,id: 'star1'%>
+       <label for="star1"><span class="text">感動した</span>★</label>
+
+       <%= f.radio_button :overrall, 4 ,id: 'star2'%>
+       <label for="star2"><span class="text">イイネ！</span>★</label>
+
+       <%= f.radio_button :overrall, 3 ,id: 'star3'%>
+       <label for="star3"><span class="text">まあまあ</span>★</label>
+
+       <%= f.radio_button :overrall, 2 ,id: 'star4'%>
+       <label for="star4"><span class="text">うーん。</span>★</label>
+
+       <%= f.radio_button :overrall, 1 ,id: 'star5'%>
+       <label for="star5"><span class="text">最悪</span>★</label>
+     </div>
   </div>
   <br>
-  <br>
-  <br>
-  <br>
-  <div class="field">
-  <h3>
-    <%= f.label :どんな本？（一言で！） %>
-    <%= f.text_field :learn,class: 'form-control', size: 140 %>
-  </h3>
-  </div>
-  <br>
-
-  <div class="field">
-  <h3>
-    <%= f.label :この本から学んだこと %><br>
-    <%= f.text_area :about,class: 'form-control', size: "80x6" %>
-  </h3>
-  </div>
-  <br>
-  <h3>総合評価</h3>
-  <br>
-  <div class= "star-rating">
-   <div class="post_form">
-    <%= f.radio_button :overrall, 5 ,id: 'star1'%>
-    <label for="star1"><span class="text">感動した</span>★</label>
-
-    <%= f.radio_button :overrall, 4 ,id: 'star2'%>
-    <label for="star2"><span class="text">イイネ！</span>★</label>
-
-    <%= f.radio_button :overrall, 3 ,id: 'star3'%>
-    <label for="star3"><span class="text">まあまあ</span>★</label>
-
-    <%= f.radio_button :overrall, 2 ,id: 'star4'%>
-    <label for="star4"><span class="text">うーん。</span>★</label>
-
-    <%= f.radio_button :overrall, 1 ,id: 'star5'%>
-    <label for="star5"><span class="text">最悪</span>★</label>
-  </div>
- </div>
- <br>
 
   <%= f.submit "本を再投稿する" %>
 <% end %>
 <br>
 <br>
 
-<h3>
-  <%= link_to "本の一覧に戻る", books_path %>
-</h3>
-<br>
-<br>
+  <h3>
+    <%= link_to "本の一覧に戻る", books_path %>
+  </h3>
+  <br>
+  <br>
 </div>

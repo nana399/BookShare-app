@@ -4,34 +4,49 @@
     <h1>Sign Up</h1>
         <%= render "users/shared/error_messages", resource: resource %>
         <br>
-        <div class="field">
-          <%= f.text_field :name, autofocus: true,autocomplete: "name", class:"field_input", :placeholder => "Username" %>
+        <div class="form-item">
+          <h3>
+            <%= f.label :email, "Username" %><br />
+            <%= f.text_field :name, autofocus: true,autocomplete: "name" %>
+          </h3>
         </div>
         <br>
 
-        <div class="field">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"field_input", :placeholder => "Email"%>
+        <div class="form-item">
+          <h3>
+            <%= f.label :email, "Email" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </h3>
         </div>
 
-        <div class="field">
-          <% if @minimum_password_length %>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class:"field_input", :placeholder => "password" %>
+       <div class="form-item">
+        <h3>
+            <% if @minimum_password_length %>
+            <% end %><br />
+            <%= f.label :email, "Password" %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </h3>
         </div>
         <br>
 
-        <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"field_input", :placeholder => "password確認" %>
+        <div class="form-item">
+          <h3>
+            <%= f.label :email, "Password確認" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </h3>
         </div>
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
-       </div>
+        <h3>
+          <%= f.submit "Sign up" %>
+        </h3>
+      </div>
        
       <% end %>
-
-      <%= render "users/shared/links" %>
+      <h3>
+        <%= render "users/shared/links" %>
+      </h3>
       <br>
       <br>
   </div>

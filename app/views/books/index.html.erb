@@ -58,32 +58,38 @@
     <br>
     <h1>BOOK SHARE RANKING👑</h1>
     <br>
-    <br>
+      <div class="rankingrate">
+        <h1>No.1</h1>
+        <h1>No.2</h1>
+        <h1>No.3</h1>
+        <h1>No.4</h1>
+        <h1>No.5</h1>
+      </div>
     <div class="books-container">
       <% @books.each do |t| %>
       <div class="blockwrapper">
         <div class=block>
-         <h3>
-          <p class= "blockthumb">
-          <%= image_tag t.image, size: "120x220" if t.image? %>
-        <br>
-        <% if user_signed_in? %>
-        <% if current_user.already_liked?(t) %>
-            <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
-              <i class="far fa-heart"></i><%= t.likes.count %>
-            <% end %>
+          <h3>
+            <p class= "blockthumb">
+            <%= image_tag t.image, size: "120x220" if t.image? %>
+          <br>
+          <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
         <% else %>
-            <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
-              <i class="far fa-heart"></i><%= t.likes.count %>
-            <% end %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
         <% end %>
-      <% else %>
-        <i class="far fa-heart"></i><%= t.likes.count %>
-      <% end %>
-        <% @rank_books.each do |t| %>
-      <% end %>
-      <%= link_to "詳細", book_path(t.id) %> 
-      </h3>
+          <% @rank_books.each do |t| %>
+        <% end %>
+        <%= link_to "詳細", book_path(t.id) %> 
+        </h3>
         </p>
         <div class="bottomcontainer">
         <a href="/users/<%= t.user.id %>">
@@ -97,8 +103,8 @@
       </div>
     </div>
     <br>
-        <% @rank_books.each do |t| %>
-          <% end %>
+     <% @rank_books.each do |t| %>
+     <% end %>
     <% end %>
     <br>
     <br>
@@ -118,7 +124,7 @@
         <div class=mypostblock>
           <h3>
             <p class= "blockthumb">
-            <%= image_tag t.image, size: "130x330" if t.image? %>
+            <%= image_tag t.image, size: "130x280" if t.image? %>
             <br>
             <% if user_signed_in? %>
             <% if current_user.already_liked?(t) %>
@@ -135,9 +141,11 @@
           <% end %>
             <% @rank_books.each do |t| %>
           <% end %>
-          <%= link_to "詳細", book_path(t.id) %>
-          <%= link_to "編集", edit_book_path(t.id) %>
-          <%= link_to "削除", book_path(t.id), method: :delete %>
+            <%= link_to "詳細", book_path(t.id) %>
+          <% if user_signed_in? && current_user.id == t.user_id %>  
+            <%= link_to "編集", edit_book_path(t.id) %>
+            <%= link_to "削除", book_path(t.id), method: :delete %>
+          <% end %>
           </p>
         </h3>
         <div class="bottomcontainer">
@@ -161,4 +169,11 @@
             <%= link_to "＋もっと見る", user_path(current_user.id), class:"btn-gradient-simple" %>
             </h3>
       <% end %>
+      <br>
+      <% if user_signed_in? %>
+          <h3>
+            <%= link_to "マイページ", user_path(current_user.id), class: "btn-flat-border" %>
+            <%= link_to "新規投稿", new_book_path, class: "btn-flat-border" %>
+          </h3>
+          <% end %>
     </section>
