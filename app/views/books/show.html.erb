@@ -30,7 +30,7 @@
             <h3>本のカテゴリー：<%= @book.category %></h3>
             <h3>その本を一言でまとめると：<%= @book.learn%></h3>
             <h3>その本で学んだこと：<%= simple_format(@book.about) %></h3>
-            <h3><%= @book.created_at %></h3>
+            <h3><%= @book.created_at.to_s(:datetime_jp) %></h3>
       </div>
     </div>
   </div>

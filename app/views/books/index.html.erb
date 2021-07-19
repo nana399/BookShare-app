@@ -66,12 +66,13 @@
         <h1>No.5</h1>
       </div>
     <div class="books-container">
-      <% @books.each do |t| %>
+     
+      <% @rank_books.each do |t| %>
       <div class="blockwrapper">
         <div class=block>
           <h3>
             <p class= "blockthumb">
-            <%= image_tag t.image, size: "120x220" if t.image? %>
+            <%= image_tag t.image, size: "100x220" if t.image? %>
           <br>
           <% if user_signed_in? %>
           <% if current_user.already_liked?(t) %>
@@ -103,9 +104,8 @@
       </div>
     </div>
     <br>
-     <% @rank_books.each do |t| %>
      <% end %>
-    <% end %>
+    
     <br>
     <br>
     <br>
@@ -117,45 +117,45 @@
     <br>
     <br>
     <section id="forth-block">
-      <h1>My Post</h1>
+      <h1>New Post</h1>
       <div class="books-container">
-      <% @books.each do |t| %>
-      <div class="blockwrapper">
-        <div class=mypostblock>
-          <h3>
-            <p class= "blockthumb">
-            <%= image_tag t.image, size: "130x280" if t.image? %>
-            <br>
-            <% if user_signed_in? %>
-            <% if current_user.already_liked?(t) %>
-                <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
-                  <i class="far fa-heart"></i><%= t.likes.count %>
-                <% end %>
+        <% @books.each do |t| %>
+        <div class="blockwrapper">
+          <div class=mypostblock>
+            <h3>
+              <p class= "blockthumb">
+              <%= image_tag t.image, size: "100x220" if t.image? %>
+              <br>
+              <% if user_signed_in? %>
+              <% if current_user.already_liked?(t) %>
+                  <%= link_to book_like_path(id: t.id, book_id: t.id), method: :delete do %>
+                    <i class="far fa-heart"></i><%= t.likes.count %>
+                  <% end %>
+              <% else %>
+                  <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
+                    <i class="far fa-heart"></i><%= t.likes.count %>
+                  <% end %>
+              <% end %>
             <% else %>
-                <%= link_to book_likes_path(id: t.id, book_id: t.id), method: :post do %>
-                  <i class="far fa-heart"></i><%= t.likes.count %>
-                <% end %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
             <% end %>
-          <% else %>
-            <i class="far fa-heart"></i><%= t.likes.count %>
-          <% end %>
-            <% @rank_books.each do |t| %>
-          <% end %>
-            <%= link_to "詳細", book_path(t.id) %>
-          <% if user_signed_in? && current_user.id == t.user_id %>  
-            <%= link_to "編集", edit_book_path(t.id) %>
-            <%= link_to "削除", book_path(t.id), method: :delete %>
-          <% end %>
+              <%= link_to "詳細", book_path(t.id) %>
+            <% if user_signed_in? && current_user.id == t.user_id %>  
+              <%= link_to "編集", edit_book_path(t.id) %>
+              <%= link_to "削除", book_path(t.id), method: :delete %>
+            <% end %>
+            </p>
+          </h3>
+          <div class="bottomcontainer">
+          <p>
+            <a href="/users/<%= t.user.id %>">
+            <%= t.user.name %></a>
+            <%= t.created_at.to_s(:datetime_jp) %>
+              <span class="star-rating">
+              <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
+              <span class="star-rating-back">★★★★★</span>
+            </span> 
           </p>
-        </h3>
-        <div class="bottomcontainer">
-          <a href="/users/<%= t.user.id %>">
-          <%= t.user.name %></a>
-          <%= t.created_at.to_s(:datetime_jp) %>
-            <span class="star-rating">
-            <span class="star-rating-front" style="width: <%= getPercent(t.overrall) %>%;">★★★★★</span>
-            <span class="star-rating-back">★★★★★</span>
-          </span> 
         </div>
       </div>
     </div>
