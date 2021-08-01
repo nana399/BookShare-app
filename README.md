@@ -13,6 +13,13 @@
 ```
 を記録することが出来ます。
 
+## サンプルログイン
+URL→[BOOK SHARE](https://bookshareing.herokuapp.com/)
+```
+メールアドレス：sample.gmail.com
+パスワード：password
+```
+
 # 制作背景
 本を読んでも１週間後には内容を忘れてしまうことに問題意識を感じていました。
 <br>
@@ -36,11 +43,6 @@
 - フロントエンド部分をVue.js / Nuxt.jsで整える
 - Rspecでテストを書く
 
-# サンプルログイン
-```
-メールアドレス：sample.gmail.com
-パスワード：password
-```
 
 # デモ（現時点）
 - [![Image from Gyazo](https://i.gyazo.com/815dfd263773a7c184120ca930b79f66.gif)](https://gyazo.com/815dfd263773a7c184120ca930b79f66)
