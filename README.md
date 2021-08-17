@@ -45,5 +45,5 @@ URL→[BOOK SHARE](https://bookshareing.herokuapp.com/)
 
 
 # デモ（現時点）
-- [![Image from Gyazo](https://i.gyazo.com/815dfd263773a7c184120ca930b79f66.gif)](https://gyazo.com/815dfd263773a7c184120ca930b79f66)
+[![Image from Gyazo](https://i.gyazo.com/487914f6b09e35a660256af2b5223fc6.gif)](https://gyazo.com/487914f6b09e35a660256af2b5223fc6)
 
