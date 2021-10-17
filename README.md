@@ -36,11 +36,12 @@ URL→[BOOK SHARE](https://bookshareing.herokuapp.com/)
 ## ❏ バックエンド
 - Ruby 2.7.2
 - Ruby on Rails 6.1.3
+- 
+## 特に苦労をした点
+- 本登録を簡単にするためにGoogleBooksAPIを導入したのですが、<br>
+GoogleBooksから画像を取得するのにとても苦労しました。
 
 # これから実装すること
-- GoogleBooksAPIを導入する
-- マイページ機能をつける
-- フロントエンド部分をVue.js / Nuxt.jsで整える
 - Rspecでテストを書く
 
 
